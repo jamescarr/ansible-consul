@@ -1,2 +1,17 @@
 ---
-# tasks file for ansible-consul
+- name: install unzip
+  package:
+    name: "{{ item }}"
+  with_items:
+    - unzip
+    - ca-certificates
+
+- name: update ca certs
+  command: update-ca-certificates
+  changed_when: False
+
+- name: Extract consul
+  unarchive:
+    src: https://releases.hashicorp.com/consul/0.8.3/consul_0.8.3_linux_amd64.zip
+    dest: /usr/local/bin
+    remote_src: true

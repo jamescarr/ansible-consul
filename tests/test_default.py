@@ -4,9 +4,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     '.molecule/ansible_inventory').get_hosts('all')
 
 
-def test_hosts_file(File):
-    f = File('/etc/hosts')
-
-    assert f.exists
-    assert f.user == 'root'
-    assert f.group == 'root'
+def test_consul_is_installed(File):
+    consul = File("/usr/local/bin/consul")
+    assert consul.exists
+    assert not consul.is_directory
