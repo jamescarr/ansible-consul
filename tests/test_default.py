@@ -8,3 +8,10 @@ def test_consul_is_installed(File):
     consul = File("/usr/local/bin/consul")
     assert consul.exists
     assert not consul.is_directory
+
+
+def test_consul_is_running(Service):
+    consul = Service('consul')
+
+    assert consul.is_running
+    assert consul.is_enabled

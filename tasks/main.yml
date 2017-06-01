@@ -15,3 +15,11 @@
     src: "{{ consul_download_url }}"
     dest: "{{ consul_bin_dir }}"
     remote_src: true
+
+- name: Render Systemd Config
+  template:
+    src: consul.systemd.j2
+    dest: /etc/systemd/system/consul.service
+    mode: 0644
+  notify: restart consul
+

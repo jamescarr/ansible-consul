@@ -1,0 +1,18 @@
+[Unit]
+Description=Consul Agent
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Environment="GOMAXPROCS=`nproc`"
+Restart=on-failure
+User=root
+Group=root
+PermissionsStartOnly=true
+ExecStartPre=/sbin/setcap CAP_NET_BIND_SERVICE=+eip {{ consul_bin_dir }}/consul
+ExecStart={{ consul_bin_dir }}/consul agent -data-dir=/tmp/consul
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
