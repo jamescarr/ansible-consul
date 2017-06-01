@@ -22,4 +22,3 @@
     dest: /etc/systemd/system/consul.service
     mode: 0644
   notify: restart consul
-

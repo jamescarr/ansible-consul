@@ -6,9 +6,8 @@ driver:
 docker:
   containers:
     - name: ansible-consul
-      image: ubuntu
+      image: solita/ubuntu-systemd
       image_version: latest
-      ansible_groups:
-        - group1
+      privileged: True
 verifier:
   name: testinfra
