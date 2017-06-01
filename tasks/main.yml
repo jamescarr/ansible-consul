@@ -12,6 +12,6 @@
 
 - name: Extract consul
   unarchive:
-    src: https://releases.hashicorp.com/consul/0.8.3/consul_0.8.3_linux_amd64.zip
-    dest: /usr/local/bin
+    src: "{{ consul_download_url }}"
+    dest: "{{ consul_bin_dir }}"
     remote_src: true
