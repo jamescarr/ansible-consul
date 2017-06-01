@@ -9,6 +9,7 @@
 - name: update ca certs
   command: update-ca-certificates
   changed_when: False
+  when: ansible_os_family == "Debian"
 
 - name: Extract consul
   unarchive:
@@ -21,4 +22,15 @@
     src: consul.systemd.j2
     dest: /etc/systemd/system/consul.service
     mode: 0644
+  notify:
+    - reload systemd daemon
+    - restart consul
+  when: ansible_service_mgr == 'systemd'
+
+- name: Render Upstart Config
+  template:
+    src: consul.upstart.j2
+    dest: /etc/init/consul.conf
+    mode: 0644
   notify: restart consul
+  when: ansible_service_mgr == 'upstart'

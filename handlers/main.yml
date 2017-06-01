@@ -1,7 +1,10 @@
 ---
+- name: reload systemd daemon
+  command: systemctl daemon-reload
+  changed_when: false
+
 - name: restart consul
-  systemd:
-    daemon_reload: yes
+  service:
     name: consul
     state: restarted
     enabled: yes
