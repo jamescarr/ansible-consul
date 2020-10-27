@@ -13,7 +13,7 @@ click==6.7
 colorama==0.3.7
 configparser==3.5.0
 cookiecutter==1.5.1
-cryptography==1.9
+cryptography==3.2
 docker==2.3.0
 docker-pycreds==0.2.1
 enum34==1.1.6
