@@ -32,7 +32,7 @@ pbr==2.1.0
 pexpect==4.2.1
 poyo==0.4.1
 ptyprocess==0.5.1
-py==1.4.33
+py==1.10.0
 pyasn1==0.2.3
 pycodestyle==2.3.1
 pycparser==2.17
