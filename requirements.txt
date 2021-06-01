@@ -47,6 +47,6 @@ sh==1.12.13
 six==1.10.0
 tabulate==0.7.7
 testinfra==1.5.5
-urllib3==1.21.1
+urllib3==1.26.5
 websocket-client==0.40.0
 whichcraft==0.4.1
